@@ -9,7 +9,8 @@ if (isset($_SESSION['login'])) {
     } 
 
 if (($_POST['login']!= '') AND ($_POST['password']!=''))  {
-        $login = htmlspecialchars($_POST['login']);        
+    //$name = isset($_POST['name']) ? validatorUsername($_POST['name']) : NULL;
+        $login = isset($_POST['login']) ? validateLogin($_POST['login']) : null;   
         $pass = htmlspecialchars($_POST['password']);
 
         //  Récupération de l'utilisateur et de son pass hashé
@@ -41,8 +42,12 @@ if (($_POST['login']!= '') AND ($_POST['password']!=''))  {
             $_SESSION['login'] = $login;
             // Récupération du groupe pour définir les autorisations
             
-
-            $_SESSION['groupe'] = 
+            $req = $bdd->query('SELECT utilisateurs.login,
+                                groupes.nom
+                                FROM utilisateurs, groupes
+                                WHERE utilisateurs.id_groupes = groupes.id');
+                                $resultat = $req->fetch();
+            $_SESSION['groupe'] = $resultat['nom'];
             header('location:../view.php');
         }
     

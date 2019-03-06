@@ -12,13 +12,40 @@ if (!isset($_SESSION['login'])) {
 if (isset($_SESSION['login'])) {
 
     echo "<h3>Bonjour " . $_SESSION['login'] . "</h3>" ;
-    $_SESSION['groupe'] = 'administrateurs';
 
             //récupérer le groupe de l'utilisateur
-            if ($_SESSION['groupe'] == 'administrateurs') {                
-                $screen = formAdmin();
+            if ($_SESSION['groupe'] == 'administrateurs') {   
+                echo "<p>Félicitation, vous etes administrateur, vous pouvez donc:</p>";          
+                //premier choix
+                $screen = createUser();
                 printForm($screen);
+                //Deuxième choix
+                $screen = createGroup();
+                printForm($screen);
+                //troisième choix
+                $screen = changeGroup();
+                printForm($screen);
+
+            
+
+
+
+
+
+
+
                 }
+
+
+
+
+
+
+
+
+
+
+
 
             if ($_SESSION['groupe'] == 'utilisateurs') {
                 //affichage des messages d'erreur
@@ -27,6 +54,7 @@ if (isset($_SESSION['login'])) {
                     $_SESSION['msg']='';
                 } else {
                     echo "<p>Vous pouvez modifier votre mot de passe : </p>";
+                    echo "<p><em>1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spécial minimum, 8 caractères minimum</em></p>";
                     
                 }               
                 //Génération du formulaire

@@ -17,6 +17,8 @@ if (isset($_SESSION['login']) AND ($_SESSION['groupe']==='utilisateurs')) {
     $newPwdCfm = htmlspecialchars($_POST['newPwdCfm']);
     $pass = htmlspecialchars($_POST['oldPwd']);
 
+    
+    
     // Vérification de la cohérence entre les 2 nouveaux mots de passe 
     if ( $newPwd !== $newPwdCfm){
         $_SESSION['msg'] = '<p style="color:red;">Les deux mots de passe doivent être identiques</p>';
@@ -30,6 +32,11 @@ if (isset($_SESSION['login']) AND ($_SESSION['groupe']==='utilisateurs')) {
     } 
 
     else if ( $newPwd === $newPwdCfm) {
+        //vérification de l'expression rationnelle
+        if ( !validatePassword($newPwdCfm){
+            $_SESSION['msg'] = '<p style="color:red;">Le mot de passe ne respecte pas les règles de sécurité</p>';
+            header('location:../view.php');
+        } 
          //Vérification de l'ancien mot de passe
         $login = $_SESSION['login'];        
         
