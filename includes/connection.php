@@ -2,11 +2,11 @@
 /**
  * Connect to mySQL database
  * dbname : TP_securite_info
- * user : root
- * password : *jVzTD[-4Qs2
+ * user : userTP
+ * password : C@Nn3#ioN
  */
 try {
-$bdd = new PDO('mysql:host=localhost;dbname=tp_securite_info;charset=utf8', 'root','*jVzTD[-4Qs2');
+$bdd = new PDO('mysql:host=localhost;dbname=tp_securite_info;charset=utf8', 'userTP','C@Nn3#ioN');
 }
 catch(Exception $e) {
     die('Erreur : '.$e->getMessage());

@@ -15,12 +15,13 @@ function printForm ($form) {
  */
 function formLogin() {
     $form = [];
+    $form[] = "<h4>Veuillez vous connecter</h4>\n";
     $form[] = "<form action='includes/login.php' method='POST'>\n";
     $form[] = "<label for='login'>Login : </label>\n";
     $form[] = "<input type='text' name='login' id='login' required>\n";
     $form[] = "<br>\n";
     $form[] = "<label for='password'>Password : </label>\n";
-    $form[] = "<input type='password' name='password' id='password' required>\n";
+    $form[] = "<input type='password' name='password' id='password' required><br>\n";
     $form[] = "<br>\n";
     $form[] = "<input type='submit'  >\n";
     $form[] = "</form>\n";
@@ -199,7 +200,7 @@ function validatePassword($str){
  * Vérification de la description
  */
 function validateDescription($str){   
-    $motif='%^[[:alnum:][ ‘-., ;() :][:space:]]{3,200}$%';
+    $motif='%^[-[:alnum:]’[:punct:][:space:]]{3,200}$%';
     if (preg_match($motif, $str)) {
         return  $str;
     } else return NULL; 

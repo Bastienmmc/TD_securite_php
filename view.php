@@ -16,6 +16,12 @@ if (isset($_SESSION['login'])) {
             //récupérer le groupe de l'utilisateur
             if ($_SESSION['groupe'] == 'administrateurs') {   
                 echo "<p>Félicitation, vous etes administrateur, vous pouvez donc:</p>";          
+                if (!empty($_SESSION['msg'])) {//vérification d'erreur précédentes
+                    foreach ($_SESSION['msg'] as $val) {
+                        echo $val;
+                    }
+                    $_SESSION['msg']='';
+                } 
                 //premier choix
                 $screen = createUser();
                 printForm($screen);
@@ -25,27 +31,8 @@ if (isset($_SESSION['login'])) {
                 //troisième choix
                 $screen = changeGroup();
                 printForm($screen);
-
+                }    
             
-
-
-
-
-
-
-
-                }
-
-
-
-
-
-
-
-
-
-
-
 
             if ($_SESSION['groupe'] == 'utilisateurs') {
                 //affichage des messages d'erreur

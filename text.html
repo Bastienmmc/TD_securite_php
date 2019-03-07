@@ -14,34 +14,34 @@
 
     <h4>Créer un utilisateur</h4>
 
-        <form action="includes/createUser.php" method="POST">
-            <input type="hidden" >
-            <label for="login">Login : </label><input type="text" class="text" name="login" required><br>
-            <label for="nom_complet">Nom complet : </label><input type="text" class="text" name="nom_complet"required><br>
-            <label for="age">Age : </label><input type="text" class="text" name="age"required><br>
-            <label for="code_postal">Code postal : </label><input type="text" class="text" name="code_postal"required><br>
-            <label for="telephone">Téléphone : </label><input type="text" class="text" name="telephone"required><br>
-            <label for="metier">Métier : </label><input type="text" class="text" name="metier"required><br>
+        <form action='includes/createUser.php' method='POST'>
+            <input type='hidden' >
+            <label for='login'>Login : </label><input type='text' class='text' name='login' required><br>
+            <label for='nom_complet'>Nom complet : </label><input type='text' class='text' name='nom_complet'required><br>
+            <label for='age'>Age : </label><input type='text' class='text' name='age'required><br>
+            <label for='code_postal'>Code postal : </label><input type='text' class='text' name='code_postal'required><br>
+            <label for='telephone'>Téléphone : </label><input type='text' class='text' name='telephone'required><br>
+            <label for='metier'>Métier : </label><input type='text' class='text' name='metier'required><br>
             <br>
-            <input type="submit" value="Envoyer">
+            <input type='submit' value='Envoyer'>
         </form>
 
     <h4>Créer un groupe</h4>
-        <form action="includes/createGroup.php" method="POST">
-            <input type="hidden">
-            <label for="nom">Nom : </label><input type="text" class="text" name="nom" required><br>
-            <label for="description">Description : </label><input type="text" class="text" name="description" required><br>
+        <form action='includes/createGroup.php' method='POST'>
+            <input type='hidden'>
+            <label for='nom'>Nom : </label><input type='text' class='text' name='nom' required><br>
+            <label for='description'>Description : </label><input type='text' class='text' name='description' required><br>
             <br>
-            <input type="submit" value="Envoyer">
+            <input type='submit' value='Envoyer'>
         </form>
     
         <h4>Changer les droits d'un utilisateur</h4>
-        <form action="includes/changeGroup" method="POST">
-            <input type="hidden">
-            <label for="login">Utilisateur (login) : </label><input type="text" class="text" name="login" required><br>
-            <label for="nom">Nom du nouveau groupe : </label><input type="text" class="text" name="nom" required><br>
+        <form action='includes/changeGroup' method='POST'>
+            <input type='hidden'>
+            <label for='login'>Utilisateur (login) : </label><input type='text' class='text' name='login' required><br>
+            <label for='nom'>Nom du nouveau groupe : </label><input type='text' class='text' name='nom' required><br>
             <br>
-            <input type="submit" value="Envoyer">
+            <input type='submit' value='Envoyer'>
         </form>
 
     <p><a href='includes/logout.php'>Se déconnecter</a></p>
