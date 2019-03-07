@@ -33,7 +33,7 @@ if (isset($_SESSION['login']) AND ($_SESSION['groupe']==='utilisateurs')) {
 
     else if ( $newPwd === $newPwdCfm) {
         //vérification de l'expression rationnelle
-        if ( !validatePassword($newPwdCfm){
+        if ( !validatePassword($newPwdCfm)){
             $_SESSION['msg'] = '<p style="color:red;">Le mot de passe ne respecte pas les règles de sécurité</p>';
             header('location:../view.php');
         } 
@@ -72,13 +72,6 @@ if (isset($_SESSION['login']) AND ($_SESSION['groupe']==='utilisateurs')) {
             $_SESSION['msg'] = '<p style="color:red;">Modification effectuée, vous avez modifié votre mot de passe ' . $_SESSION['login'] . '</p>';
             //redirection
             header('location:../view.php');
-
         }
     }
-   
-
-    //Array ( [oldPwd] => anc [newPwd] => nouv [newPwdCfm] => nouve )
-    
-    
-    
 }

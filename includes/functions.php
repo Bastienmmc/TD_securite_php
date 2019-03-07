@@ -128,10 +128,6 @@ function formUser() {
     return $form;
 }
 
-function addUser() {
-    $form =[];
-
-}
 
 /**
  * Vérification du login

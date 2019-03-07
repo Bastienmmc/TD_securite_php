@@ -21,19 +21,18 @@ if (($_POST['login']!= '') AND ($_POST['password']!=''))  {
 
         // Comparaison du pass envoyé via le formulaire avec la base
         $isPasswordCorrect = password_verify($pass, $resultat['mot_de_passe']);        
-        $_POST = array();
+        //$_POST = array();
+        $req->closeCursor();
 
-
-        
-
-    if (!$resultat)
-    {
-        $_POST = array();
-        header('location:error.php?err=Login ou mot de passe incorrect');
+    if (!$resultat){
+        //$_POST = array();
+        $_SESSION['msg'] = '<p style="color:red;">Login ou mot de passe incorrect</p>';
+        header('location:../view.php');
     }
     else if (!$isPasswordCorrect) {
-        $_POST = array();
-        header('location:error.php?err=Login ou mot de passe incorrect');
+        //$_POST = array();
+        $_SESSION['msg'] = '<p style="color:red;">Login ou mot de passe incorrect</p>';
+        header('location:../view.php');
     }
     else if ($isPasswordCorrect) {
         //on peut démarrer une nouvelle session
@@ -41,17 +40,21 @@ if (($_POST['login']!= '') AND ($_POST['password']!=''))  {
             secure_session_start();
             $_SESSION['login'] = $login;
             // Récupération du groupe pour définir les autorisations
-            
-            $req = $bdd->query('SELECT utilisateurs.login,
-                                groupes.nom
-                                FROM utilisateurs, groupes
-                                WHERE utilisateurs.id_groupes = groupes.id');
-                                $resultat = $req->fetch();
+            $req = $bdd->prepare('SELECT groupes.nom, utilisateurs.login
+                                FROM groupes INNER JOIN utilisateurs
+                                ON utilisateurs.id_groupes = groupes.id WHERE utilisateurs.login =:login');
+            $req->execute(array(
+                    'login' => $login
+                        ));
+            $resultat = $req->fetch();
+            $req->closeCursor();                                
             $_SESSION['groupe'] = $resultat['nom'];
             header('location:../view.php');
-        }
-    
-    } else {
-            $_POST = array();     
-            header('location:error.php?err=Login ou mot de passe incorrect');  
+
+        }    
+    } 
+    else {
+        //$_POST = array();     
+        $_SESSION['msg'] = '<p style="color:red;">Login ou mot de passe incorrect</p>';
+        header('location:../view.php');  
 }

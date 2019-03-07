@@ -5,6 +5,10 @@ require('includes/functions.php');
 secure_session_start();
 
 if (!isset($_SESSION['login'])) {
+    if ((isset($_SESSION['msg'])) AND  ($_SESSION['msg'] !== '')) {
+        echo $_SESSION['msg'];
+        $_SESSION['msg']='';
+    }
     $screen = formLogin();
     printForm($screen);
 }
